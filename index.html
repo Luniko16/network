@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VLAN Network Design - Networking Project</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <div class="hero-content">
+                <h1>small-business-network-project</h1>
+                <p class="subtitle">Inter-VLAN Routing with Cisco Packet Tracer</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Cisco IOS</span>
+                    <span class="tech-tag">VLANs</span>
+                    <span class="tech-tag">Router-on-a-Stick</span>
+                    <span class="tech-tag">Network Segmentation</span>
+                </div>
+            </div>
+        </header>
+
+        <nav class="project-nav">
+            <button class="nav-btn active" data-section="overview">Overview</button>
+            <button class="nav-btn" data-section="topology">Network Topology</button>
+            <button class="nav-btn" data-section="configuration">Configuration</button>
+            <button class="nav-btn" data-section="testing">Testing & Validation</button>
+        </nav>
+
+        <main class="content">
+            <section id="overview" class="section active">
+                <div class="section-header">
+                    <h2><i class="fas fa-info-circle"></i> Project Overview</h2>
+                </div>
+                <div class="overview-grid">
+                    <div class="overview-card">
+                        <h3><i class="fas fa-bullseye"></i> Objective</h3>
+                        <p>Design and implement a segmented network using VLANs with inter-VLAN routing to demonstrate network isolation and controlled communication between different departments.</p>
+                    </div>
+                    <div class="overview-card">
+                        <h3><i class="fas fa-sitemap"></i> Network Architecture</h3>
+                        <ul>
+                            <li><strong>3 VLANs:</strong> HR (VLAN 10), IT (VLAN 20), Finance (VLAN 30)</li>
+                            <li><strong>Router-on-a-Stick:</strong> Single router with subinterfaces</li>
+                            <li><strong>Layer 2 Switch:</strong> VLAN configuration and port assignments</li>
+                            <li><strong>5 End Devices:</strong> PCs distributed across VLANs</li>
+                        </ul>
+                    </div>
+                    <div class="overview-card">
+                        <h3><i class="fas fa-cogs"></i> Technologies Used</h3>
+                        <ul>
+                            <li>Cisco Packet Tracer</li>
+                            <li>Cisco IOS Commands</li>
+                            <li>VLAN Trunking Protocol</li>
+                            <li>Subinterface Configuration</li>
+                            <li>IP Subnetting</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="topology" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-project-diagram"></i> Network Topology</h2>
+                </div>
+                <div class="topology-container">
+                    <div class="topology-image">
+                        <img src="topology.png" alt="Network Topology Diagram" id="topologyImg" onload="console.log('Topology image loaded successfully')" onerror="console.log('Topology image failed to load')">
+                        <div class="image-overlay">
+                            <p>Click to view full size</p>
+                        </div>
+                    </div>
+                    <div class="topology-details">
+                        <h3>Network Segments</h3>
+                        <div class="vlan-info">
+                            <div class="vlan-card hr">
+                                <h4><i class="fas fa-users"></i> HR Department</h4>
+                                <div class="vlan-details">
+                                    <span class="vlan-id">VLAN 10</span>
+                                    <span class="subnet">192.168.10.0/24</span>
+                                </div>
+                                <p>Devices: PC0, PC1</p>
+                            </div>
+                            <div class="vlan-card it">
+                                <h4><i class="fas fa-laptop-code"></i> IT Department</h4>
+                                <div class="vlan-details">
+                                    <span class="vlan-id">VLAN 20</span>
+                                    <span class="subnet">192.168.20.0/24</span>
+                                </div>
+                                <p>Devices: PC2, PC3</p>
+                            </div>
+                            <div class="vlan-card finance">
+                                <h4><i class="fas fa-chart-line"></i> Finance Department</h4>
+                                <div class="vlan-details">
+                                    <span class="vlan-id">VLAN 30</span>
+                                    <span class="subnet">192.168.30.0/24</span>
+                                </div>
+                                <p>Devices: PC4, PC5</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="configuration" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-terminal"></i> Device Configuration</h2>
+                </div>
+                <div class="config-tabs">
+                    <button class="config-tab active" data-device="switch">Switch Configuration</button>
+                    <button class="config-tab" data-device="router">Router Configuration</button>
+                </div>
+                
+                <div class="config-content">
+                    <div id="switch-config" class="config-panel active">
+                        <h3><i class="fas fa-network-wired"></i> Switch0 Configuration</h3>
+                        <div class="config-image">
+                            <img src="Switch.png" alt="Switch Configuration" id="switchImg">
+                        </div>
+                        <div class="config-explanation">
+                            <h4>Key Configuration Steps:</h4>
+                            <ul>
+                                <li><strong>VLAN Creation:</strong> Created VLANs 10 (HR), 20 (IT), and 30 (Finance)</li>
+                                <li><strong>Port Assignment:</strong> Assigned access ports to respective VLANs</li>
+                                <li><strong>Trunk Configuration:</strong> Configured trunk port to router for inter-VLAN routing</li>
+                                <li><strong>Port Security:</strong> Implemented port security features for enhanced network security</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div id="router-config" class="config-panel">
+                        <h3><i class="fas fa-route"></i> Router0 Configuration</h3>
+                        <div class="config-image">
+                            <img src="Router.png" alt="Router Configuration" id="routerImg">
+                        </div>
+                        <div class="config-explanation">
+                            <h4>Router-on-a-Stick Setup:</h4>
+                            <ul>
+                                <li><strong>Subinterfaces:</strong> Created subinterfaces for each VLAN (G0/0.10, G0/0.20, G0/0.30)</li>
+                                <li><strong>Encapsulation:</strong> Configured 802.1Q encapsulation for VLAN tagging</li>
+                                <li><strong>IP Addressing:</strong> Assigned gateway IPs for each VLAN subnet</li>
+                                <li><strong>Routing:</strong> Enabled IP routing for inter-VLAN communication</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="testing" class="section">
+                <div class="section-header">
+                    <h2><i class="fas fa-check-circle"></i> Testing & Validation</h2>
+                </div>
+                <div class="testing-container">
+                    <div class="test-image">
+                        <img src="Ping.png" alt="Ping Test Results" id="testImg" onload="console.log('Ping image loaded successfully')" onerror="console.log('Ping image failed to load')">
+                        <div class="test-caption">
+                            <p>Successful ping tests demonstrating inter-VLAN connectivity</p>
+                        </div>
+                    </div>
+                    <div class="test-results">
+                        <h3>Validation Results</h3>
+                        <div class="test-item success">
+                            <i class="fas fa-check"></i>
+                            <span>Intra-VLAN Communication: ✓ Successful</span>
+                        </div>
+                        <div class="test-item success">
+                            <i class="fas fa-check"></i>
+                            <span>Inter-VLAN Routing: ✓ Functional</span>
+                        </div>
+                        <div class="test-item success">
+                            <i class="fas fa-check"></i>
+                            <span>VLAN Isolation: ✓ Verified</span>
+                        </div>
+                        <div class="test-item success">
+                            <i class="fas fa-check"></i>
+                            <span>Network Connectivity: ✓ All devices reachable</span>
+                        </div>
+                        
+                        <div class="test-details">
+                            <h4>Test Scenarios Performed:</h4>
+                            <ul>
+                                <li>Ping between devices in same VLAN</li>
+                                <li>Ping between devices in different VLANs</li>
+                                <li>Verification of VLAN assignments</li>
+                                <li>Trunk port functionality validation</li>
+                                <li>Router subinterface status verification</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="project-footer">
+            <div class="footer-content">
+                <p><i class="fas fa-graduation-cap"></i> This project demonstrates practical knowledge of network segmentation, VLAN configuration, and inter-VLAN routing using Cisco technologies.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modalImage" src="" alt="Full Size Image">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Placeholder Generator</title>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <script>
+        // This script creates placeholder images for the project
+        // You'll replace these with your actual Packet Tracer screenshots
+        
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Function to create placeholder image
+        function createPlaceholder(text, filename, width = 800, height = 600) {
+            canvas.width = width;
+            canvas.height = height;
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, width, height);
+            gradient.addColorStop(0, '#f8f9fa');
+            gradient.addColorStop(1, '#e9ecef');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, height);
+            
+            // Border
+            ctx.strokeStyle = '#dee2e6';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(1, 1, width-2, height-2);
+            
+            // Text
+            ctx.fillStyle = '#6c757d';
+            ctx.font = 'bold 24px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(text, width/2, height/2);
+            
+            // Subtitle
+            ctx.font = '16px Arial';
+            ctx.fillText('Replace with your Packet Tracer screenshot', width/2, height/2 + 40);
+            
+            // Download link
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.textContent = `Download ${filename}`;
+            link.style.display = 'block';
+            link.style.margin = '10px';
+            document.body.appendChild(link);
+        }
+        
+        // Create all placeholder images
+        createPlaceholder('Network Topology Diagram', 'topology.png', 800, 500);
+        createPlaceholder('Switch Configuration', 'switch-config.png', 800, 600);
+        createPlaceholder('Router Configuration', 'router-config.png', 800, 600);
+        createPlaceholder('Ping Test Results', 'ping-test.png', 800, 500);
+        
+        document.body.innerHTML += '<h2>Instructions:</h2><p>1. Download the placeholder images above<br>2. Replace them with your actual Packet Tracer screenshots<br>3. Keep the same filenames for the images to work properly</p>';
+    </script>
+</body>
+</html>

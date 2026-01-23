@@ -1,6 +1,6 @@
-# VLAN Network Design Portfolio Project
+# Small Business Network - Packet Tracer Project
 
-A professional web showcase of a Cisco Packet Tracer VLAN networking project, perfect for portfolios and technical demonstrations.
+A professional web showcase of a Cisco Packet Tracer VLAN networking project demonstrating secure small business network with VLANs, DHCP, and port security.
 
 ## 🚀 Features
 
@@ -67,12 +67,6 @@ Update the project details in `index.html`:
 - VLAN configurations  
 - IP addressing schemes
 - Testing procedures
-
-### Links
-Add your actual project links in the footer:
-- GitHub repository
-- Packet Tracer file download
-- LinkedIn profile
 
 ## 📱 Responsive Breakpoints
 
